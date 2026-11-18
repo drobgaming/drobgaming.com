@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.drobgaming.app",
+      "sha256_cert_fingerprints": [
+        "E7:B0:BA:D4:3D:99:15:75:23:2C:CA:3E:A1:5A:06:7B:45:B1:ED:6E:C3:B7:95:05:84:A6:8B:3C:5F:2C:70:F3"
+      ]
+    }
+  }
+]
