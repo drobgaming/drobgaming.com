@@ -342,7 +342,24 @@
       .empty-box { background: var(--bg-card); border: 1px dashed var(--line); border-radius: 14px; padding: 34px; }
       .empty-box .e-title { font-size: 22px; font-weight: 900; margin: 0 0 8px; }
       .empty-box p { color: var(--ink-dim); margin: 0 0 20px; max-width: 38em; }
-    </style>
+    
+  .lb{position:fixed;inset:0;background:rgba(5,5,8,.95);display:none;align-items:center;justify-content:center;z-index:999;padding:18px}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .lbx{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.14);color:#fff;border:0;width:42px;height:42px;border-radius:50%;font-size:19px;line-height:1;cursor:pointer}
+  .i-img img,.hc-grid img{cursor:zoom-in}
+  .btn:active,.i-buy:active{filter:brightness(1.12)}
+
+  .pawn-rows{list-style:none;margin:20px 0 0;padding:0}
+  .pawn-rows li{border-bottom:1px solid var(--line)}
+  .pawn-rows li:last-child{border-bottom:0}
+  .pawn-rows a{display:flex;gap:12px;align-items:baseline;padding:12px 4px;text-decoration:none;color:var(--ink)}
+  .pawn-rows .ep{flex:none;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--ink-faint);white-space:nowrap}
+  .pawn-rows b{font-size:16px;font-weight:800}
+  .pawn-rows .sub{display:block;font-size:13px;color:var(--ink-dim);font-weight:400;margin-top:1px}
+  .pawn-rows .go{margin-left:auto;flex:none;color:var(--red);font-weight:800;font-size:13px;white-space:nowrap}
+  .pawn-rows a:hover b{text-decoration:underline}
+</style>
   </head>
   <body>
     <!-- Contact info up top — prominent, always one tap away -->
@@ -500,6 +517,15 @@
             </span>
             <span class="p-go">Watch on YouTube →</span>
           </a>
+          <ul class="pawn-rows">
+            <li><a href="https://www.youtube.com/watch?v=HS3_0eFvpac" target="_blank" rel="noopener"><span class="ep">S24·E1</span><span style="flex:1"><b>Nintendo Deluxe Set + unopened black-box Super Mario Bros.</b><span class="sub">Asked $150,000.</span></span><span class="go">▶ Watch</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=6UM1H02GsQk" target="_blank" rel="noopener"><span class="ep">S23·E4</span><span style="flex:1"><b>Batman Forever SNES prototype</b><span class="sub">Prototype cartridge.</span></span><span class="go">▶ Watch</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=_PxtN69jeTg" target="_blank" rel="noopener"><span class="ep">S22·E10</span><span style="flex:1"><b>Battlestar Galactica movie screener</b><span class="sub">Screener copy.</span></span><span class="go">▶ Watch</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=1EvM_94zunY" target="_blank" rel="noopener"><span class="ep">S22·E8</span><span style="flex:1"><b>1991 TMNT Lieutenant Leo prototype + graded figure</b><span class="sub">Asked $3,500 — closed $2,400 with Chumlee.</span></span><span class="go">▶ Watch</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=omc9qK-01-g&t=686s" target="_blank" rel="noopener"><span class="ep">S20·E9</span><span style="flex:1"><b>Sealed Spider-Man and Venom: Maximum Carnage</b><span class="sub">“Maximum Pawnage” (2022).</span></span><span class="go">▶ Watch</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=jc8zfuzQdXI" target="_blank" rel="noopener"><span class="ep">S18·E8</span><span style="flex:1"><b>M82 NES demo unit</b><span class="sub">Asked $4,000, held at $3,500 — no deal.</span></span><span class="go">▶ Watch</span></a></li>
+            <li><a href="https://www.youtube.com/watch?v=TV1FE8IJLmg" target="_blank" rel="noopener"><span class="ep">S18·E6</span><span style="flex:1"><b>Two unopened Atari 2600 cartridges</b><span class="sub">First appearance.</span></span><span class="go">▶ Watch</span></a></li>
+          </ul>
         </div>
       </section>
 
@@ -934,5 +960,20 @@
       window.addEventListener("hashchange", route);
       route();
     </script>
-  </body>
+  
+<div class="lb" id="lightbox" role="dialog" aria-label="Photo viewer"><button class="lbx" id="lbClose" type="button" aria-label="Close">✕</button><img id="lbImg" src="" alt=""></div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'), li=document.getElementById('lbImg');
+  function open(src,alt){li.src=src;li.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('open');li.removeAttribute('src');document.body.style.overflow='';}
+  document.querySelectorAll('.i-img img, .hc-grid img').forEach(function(im){
+    im.addEventListener('click',function(){open(im.currentSrc||im.src,im.alt);});
+  });
+  lb.addEventListener('click',close);
+  document.getElementById('lbClose').addEventListener('click',function(e){e.stopPropagation();close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
+</body>
 </html>
