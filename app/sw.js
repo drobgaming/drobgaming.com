@@ -1,5 +1,5 @@
 // drobgaming app service worker — prep for PWA installability / TWA packaging.
-const CACHE = 'drobgaming-app-v8';
+const CACHE = 'drobgaming-app-v9';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
 
 self.addEventListener('install', (event) => {
